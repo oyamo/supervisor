@@ -1,13 +1,24 @@
 # Supervisor
 A process monitor daemon for Linux. It is a client/server system that allows its users to monitor and control a number of processes on UNIX-like operating systems. It has a web-based user interface and a REST API.
 
+## Features
+- Start, stop, restart processes
+- View process logs
+- Restart processes on crash
+- View process status
+- View process statistics
+- Alert on process crash, or low memory, or high CPU usage
+
 ## Installation
 
 ### Requirements
 
 ## Setting up
 
+## Logging recomendations
+
 ## License
+
 ```text
 MIT Licence
 Copyright 2022 Oyamo Brian
