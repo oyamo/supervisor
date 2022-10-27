@@ -13,8 +13,8 @@ type Parser struct {
 }
 
 
-func NewParser() *Parser {
-	return &Parser{}
+func NewParser(p string) *Parser {
+	return &Parser{p}
 }
 
 //CheckProcfile Check if the procfile exists and return it

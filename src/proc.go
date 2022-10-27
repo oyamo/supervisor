@@ -10,7 +10,3 @@ type ProcfileProcess struct {
 type Procfile struct {
 	Processes []ProcfileProcess
 }
-
-type procfileReader interface {
-	Read() (Procfile, error)
-}
