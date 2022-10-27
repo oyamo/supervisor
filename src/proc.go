@@ -4,7 +4,7 @@ type ProcessType string
 
 type ProcfileProcess struct {
 	Type ProcessType
-	Cmd string
+	Cmd  string
 }
 
 type Procfile struct {

@@ -6,12 +6,12 @@ import (
 )
 
 const (
-	BOLD = "\033[1m"
-	WARN = "\033[33m"
-	INFO = "\033[32m"
-	FAIL = "\033[31m"
+	BOLD    = "\033[1m"
+	WARN    = "\033[33m"
+	INFO    = "\033[32m"
+	FAIL    = "\033[31m"
 	SUCCEED = "\033[32m"
-	END = "\033[0m"
+	END     = "\033[0m"
 )
 
 type Printer struct {

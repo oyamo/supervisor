@@ -9,16 +9,15 @@ import (
 )
 
 type Parser struct {
-   Procfile string
+	Procfile string
 }
-
 
 func NewParser(p string) *Parser {
 	return &Parser{p}
 }
 
-//CheckProcfile Check if the procfile exists and return it
-func (p *Parser) GetProcfile() ([] string, error){
+// CheckProcfile Check if the procfile exists and return it
+func (p *Parser) GetProcfile() ([]string, error) {
 	file, err := os.Open(p.Procfile)
 	if err != nil {
 		return nil, err
@@ -31,7 +30,7 @@ func (p *Parser) GetProcfile() ([] string, error){
 	procfileContents := make([]string, 0)
 
 	for {
-		line, err := fileReader.ReadString ('\n')
+		line, err := fileReader.ReadString('\n')
 		if err != nil {
 			break
 		}
@@ -39,12 +38,12 @@ func (p *Parser) GetProcfile() ([] string, error){
 	}
 
 	return procfileContents, nil
-	
+
 }
 
 func (p *Parser) Parse() ([]ProcfileProcess, error) {
 	procfileProcesses := make([]ProcfileProcess, 0)
-    procfileContents, err := p.GetProcfile()
+	procfileContents, err := p.GetProcfile()
 	if err != nil {
 		return nil, err
 	}
@@ -61,16 +60,15 @@ func (p *Parser) Parse() ([]ProcfileProcess, error) {
 		processType := strings.TrimSpace(line[:lastIndexofColon])
 		if len(processType) == 0 {
 			errorMessage := fmt.Sprintf("Line %d of the procfile does not contain a process type\n", lc)
-			errorMessage += fmt.Sprintf("%d | %s%s%s", lc, WARN,line,END)
+			errorMessage += fmt.Sprintf("%d | %s%s%s", lc, WARN, line, END)
 			return nil, errors.New(errorMessage)
 		}
 
 		if processType != "web" && processType != "command" {
 			errorMessage := fmt.Sprintf("Line %d of the procfile contains an invalid process type\n", lc)
-			errorMessage += fmt.Sprintf("%d | %s%s%s", lc, WARN,line,END)
+			errorMessage += fmt.Sprintf("%d | %s%s%s", lc, WARN, line, END)
 			return nil, errors.New(errorMessage)
 		}
-			
 
 		// Check command
 		command := strings.TrimSpace(line[lastIndexofColon+1:])
@@ -82,7 +80,7 @@ func (p *Parser) Parse() ([]ProcfileProcess, error) {
 
 		procfileProcesses = append(procfileProcesses, ProcfileProcess{
 			Type: ProcessType(processType),
-			Cmd: command,
+			Cmd:  command,
 		})
 	}
 

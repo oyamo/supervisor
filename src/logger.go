@@ -19,7 +19,6 @@ func (l *Logger) getTime() string {
 	return time.Format("2006-01-02 15:04:05")
 }
 
-
 func (l *Logger) Println(s string) {
 	l.Printer.Printlnf("%s %s", l.getTime(), s)
 }
